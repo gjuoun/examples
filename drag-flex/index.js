@@ -4,7 +4,7 @@
   Wes Bos video:
     https://www.youtube.com/watch?v=C9EWifQ5xqA
 */
-const container = document.querySelector(".container");
+const container = document.querySelector(".out-container");
 
 let startY;
 let startX;
@@ -37,7 +37,7 @@ container.addEventListener("mousemove", (e) => {
     e.preventDefault();
     //Move vertcally
     const newY = e.pageY - container.offsetTop;
-    const dragDistanceY = startY - newY ;
+    const dragDistanceY = startY - newY;
     container.scrollTop = originScrollY + dragDistanceY;
 
     //Move Horizontally
@@ -45,14 +45,16 @@ container.addEventListener("mousemove", (e) => {
     const dragDistanceX = startX - newX;
     container.scrollLeft = originScrollX + dragDistanceX;
 
-    console.log("mousemove start-----", {
-      pageX: e.pageX,
-      containerOffsetLeft: container.offsetLeft,
-      newX,
-      startX,
-      dragDistanceX,
-      originScrollX,
-      containerScrollLeft: container.scrollLeft,
-    });
+    console.log(dragDistanceX);
+
+    // console.log("mousemove start-----", {
+    //   pageX: e.pageX,
+    //   containerOffsetLeft: container.offsetLeft,
+    //   newX,
+    //   startX,
+    //   dragDistanceX,
+    //   originScrollX,
+    //   containerScrollLeft: container.scrollLeft,
+    // });
   }
 });

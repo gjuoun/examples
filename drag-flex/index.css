@@ -11,35 +11,31 @@ body {
 
 .out-container {
   background: #333;
-  /* display: flex; */
-  /* flex-direction: row; */
+  display: flex;
+  flex-direction: row;
   height: 300px;
   width: 450px;
   overflow: scroll;
-  scroll-snap-type: x mandatory;
-  overscroll-behavior: contain; /* overscroll will stay in container */
-}
-
-.inner-container {
-  width: 900px;
-  height: 100%;
-  background: lightblue;
-  display: flex;
-  flex-direction: row;
+  /* scroll-snap-type: x proximity; */
+  /* overscroll will stay in container */
+  overscroll-behavior: contain;
 }
 
 .item {
-  flex-grow: 1;
+  flex-shrink: 0;
+  width: 250px;
+  height: 100%;
+  /* flex-grow: 1; */
   scroll-snap-align: start;
   /* height: 100%; */
 }
-.item:nth-child(1) {
+.item:nth-child(2n + 1) {
   background: teal;
 }
-.item:nth-child(2) {
+.item:nth-child(2n) {
   background: goldenrod;
 }
 
-.item:nth-child(3) {
+/* .item:nth-child(3) {
   background: royalblue;
-}
+} */
