@@ -6,46 +6,46 @@
 */
 const container = document.querySelector(".out-container");
 
-let startY;
-let startX;
-let originScrollX;
-let originScrollY;
-let isDown;
+let mousePosY;
+let mousePosX;
+let scrollBarX;
+let scrollBarY;
+let isMouseDown;
 
 container.addEventListener("mousedown", (e) => {
   container.style.cursor = "grabbing";
-  isDown = true;
-  startY = e.pageY - container.offsetTop;
-  startX = e.pageX - container.offsetLeft;
-  originScrollX = container.scrollLeft;
-  originScrollY = container.scrollTop;
+  isMouseDown = true;
+  mousePosY = e.pageY - container.offsetTop;
+  mousePosX = e.pageX - container.offsetLeft;
+  scrollBarX = container.scrollLeft;
+  scrollBarY = container.scrollTop;
 
   console.log("mousedown");
 });
 
 container.addEventListener("mouseup", (e) => {
   container.style.cursor = "grab";
-  isDown = false;
+  isMouseDown = false;
   // console.log("mouseup");
 });
 container.addEventListener("mouseleave", (e) => {
-  isDown = false;
+  isMouseDown = false;
   // console.log("mouseleave");
 });
 container.addEventListener("mousemove", (e) => {
-  if (isDown) {
+  if (isMouseDown) {
     e.preventDefault();
     //Move vertcally
-    const newY = e.pageY - container.offsetTop;
-    const dragDistanceY = startY - newY;
-    container.scrollTop = originScrollY + dragDistanceY;
+    const newMouseY = e.pageY - container.offsetTop;
+    const walkY = mousePosY - newMouseY;
+    container.scrollTop = scrollBarY + walkY;
 
     //Move Horizontally
-    const newX = e.pageX - container.offsetLeft;
-    const dragDistanceX = startX - newX;
-    container.scrollLeft = originScrollX + dragDistanceX;
+    const newMouseX = e.pageX - container.offsetLeft;
+    const walkX = mousePosX - newMouseX;
+    container.scrollLeft = scrollBarX + walkX;
 
-    console.log(dragDistanceX);
+    console.log(walkX);
 
     // console.log("mousemove start-----", {
     //   pageX: e.pageX,
